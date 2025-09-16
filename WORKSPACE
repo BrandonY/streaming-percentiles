@@ -47,18 +47,22 @@ load("@rules_emscripten//emscripten:def.bzl", "emscripten_setup")
 emscripten_setup(version = "3.1.0")
 # --- End rules_emscripten
 
+# --- Begin googletest
 http_archive(
     name = "gtest",
     sha256 = "ad7fdba11ea011c1d925b3289cf4af2c66a352e18d4c7264392fead75e919363",
     strip_prefix = "googletest-1.13.0",
     url = "https://github.com/google/googletest/archive/refs/tags/v1.13.0.tar.gz",
 )
+# --- End googletest
 
+# Begin google benchmark
 http_archive(
     name = "benchmark",
-    sha256 = "1f71c72ce08d2c1310011ea6436b31e39ccab8c2db94186d26657d41747c85d6",
-    strip_prefix = "benchmark-1.6.0",
-    url = "https://github.com/google/benchmark/archive/refs/tags/v1.6.0.tar.gz",
+    # 1.7.1, latest as of 2023-01-24
+    sha256 = "6430e4092653380d9dc4ccb45a1e2dc9259d581f4866dc0759713126056bc1d7",
+    strip_prefix = "benchmark-1.7.1",
+    url = "https://github.com/google/benchmark/archive/refs/tags/v1.7.1.tar.gz",
 )
 
 # For using pkg_tar()
@@ -73,4 +77,4 @@ http_archive(
 )
 load("@rules_pkg//:deps.bzl", "rules_pkg_dependencies")
 rules_pkg_dependencies()
-
+# End google benchmark
