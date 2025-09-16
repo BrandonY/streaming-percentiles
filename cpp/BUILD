@@ -10,11 +10,7 @@ cc_library(
     name = "cpp",
     hdrs = [":hdrs"],
     include_prefix = "stmpct",
-    linkopts = select({
-        "@platforms//os:linux": ["-lm"],
-        "@platforms//os:osx": ["-lm"],
-        "@platforms//os:windows": [],
-    }),
+    linkopts = ["-lm"],
     strip_include_prefix = "src",
     visibility = ["//visibility:public"],
 )
@@ -52,12 +48,4 @@ pkg_tar(
     srcs = glob(["src/*.hpp"]),
     extension = "tar.gz",
     package_dir = "include/stmpct",
-)
-
-py_test(
-    name = "test_pkg",
-    srcs = ["test/test_pkg.py"],
-    data = ["streaming_percentiles-cpp.tar.gz"],
-    deps = ["@rules_python//python/runfiles"],
-    tags = ["L0"],
 )

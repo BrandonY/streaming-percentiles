@@ -1,0 +1,5 @@
+module(name="streaming-percentiles", version="10.0")
+
+bazel_dep(name = "googletest", version = "1.17.0")
+
+bazel_dep(name = "rules_pkg",  version = "1.1.0")
